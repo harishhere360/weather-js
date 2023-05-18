@@ -21,7 +21,13 @@ let weather = {
       const { icon, description } = data.weather[0];
       const { temp, humidity } = data.main;
       const { speed } = data.wind;
+      const currentDate = new Date();
+    const dateOptions = { weekday: 'long', month: 'long', day: 'numeric' };
+    const currentTime = currentDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
       document.querySelector(".city").innerText = "Weather in " + name;
+      document.querySelector(".date").innerText = currentDate.toLocaleDateString(undefined, dateOptions);
+    document.querySelector(".time").innerText = currentTime;
       document.querySelector(".icon").src =
         "https://openweathermap.org/img/wn/" + icon + ".png";
       document.querySelector(".description").innerText = description;
